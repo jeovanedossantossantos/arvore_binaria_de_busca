@@ -14,4 +14,6 @@
 
 using namespace std;
 
+// criar o prototipo da função
+
 #endif

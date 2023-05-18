@@ -3,11 +3,12 @@ using namespace std;
 
 int main()
 {
-
+    int op = 0;
     do
     {
+        op = menu();
 
-        switch (1)
+        switch (op)
         {
         case 1:
 
