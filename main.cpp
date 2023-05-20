@@ -1,5 +1,4 @@
 #include "func.cpp"
-using namespace std;
 
 int main()
 {
@@ -7,6 +6,7 @@ int main()
     do
     {
         op = menu();
+        cout << op;
 
         switch (op)
         {
@@ -16,11 +16,17 @@ int main()
         case 2:
 
             break;
+        case 3:
+
+            break;
+        case 4:
+
+            break;
         default:
             break;
         }
 
-    } while (1 != 0);
+    } while (op != 0);
 
     return 0;
 }
