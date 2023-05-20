@@ -14,4 +14,16 @@
 
 using namespace std;
 
+struct Aluno {
+    int matricula;
+    float media;
+    Aluno* esquerda;
+    Aluno* direita;
+}
+
+int main();
+void substituiAluno(Aluno* raiz, int matricula, float novaMedia);
+void imprimeAluno(Aluno* aluno);
+void liberaArvore(Aluno*& raiz);
+
 #endif
