@@ -1,13 +1,14 @@
 #include "func.cpp"
-using namespace std;
 
 int main()
 {
-
+    int op = 0;
     do
     {
+        op = menu();
+        cout << op;
 
-        switch (1)
+        switch (op)
         {
         case 1:
 
@@ -15,11 +16,17 @@ int main()
         case 2:
 
             break;
+        case 3:
+
+            break;
+        case 4:
+
+            break;
         default:
             break;
         }
 
-    } while (1 != 0);
+    } while (op != 0);
 
     return 0;
 }
