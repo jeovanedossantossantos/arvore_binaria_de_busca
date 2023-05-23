@@ -33,5 +33,15 @@ void liberaArvore(Aluno*& raiz) {
         raiz = nullptr;
     }
 }
+Aluno* buscarAluno(Aluno* raiz, int matricula) {
+    if (raiz == nullptr || raiz->matricula == matricula) {
+        return raiz;
+    }
 
+    if (matricula < raiz->matricula) {
+        return buscarAluno(raiz->esquerda, matricula);
+    } else {
+        return buscarAluno(raiz->direita, matricula);
+    }
+}
 
