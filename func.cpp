@@ -21,61 +21,73 @@ int menu()
     return n;
 }
 
-void substituiAluno(Aluno *raiz, int matricula, float novaMedia)
+Aluno* criarAluno(int matricula, float media) 
 {
-    Aluno *atual = raiz;
+    Aluno* novoAluno = new Aluno;
+    novoAluno->matricula = matricula;
+    novoAluno->media = media;
+    novoAluno->esquerda = nullptr;
+    novoAluno->direita = nullptr;
+    return novoAluno;
+}
 
-    while (atual != nullptr)
-    {
-        if (matricula == atual->matricula)
-        {
-            atual->media = novaMedia;
-            break;
-        }
-        else if (matricula < atual->matricula)
-        {
-            atual = atual->esquerda;
-        }
-        else
-        {
-            atual = atual->direita;
-        }
+Aluno* inserirAluno(Aluno* raiz, int matricula, float media) 
+{
+    if (raiz == nullptr) {
+        return criarAluno(matricula, media);
+    }
+    if (matricula < raiz->matricula) {
+        raiz->esquerda = inserirAluno(raiz->esquerda, matricula, media);
+    } else {
+        raiz->direita = inserirAluno(raiz->direita, matricula, media);
+    }
+    return raiz;
+}
+
+void imprimirAlunos(Aluno* raiz) 
+{
+    if (raiz != nullptr) {
+        imprimirAlunos(raiz->esquerda);
+        cout << "Matrícula: " << raiz->matricula << ", Média: " << raiz->media <<endl;
+        imprimirAlunos(raiz->direita);
     }
 }
 
-void imprimeAluno(Aluno *aluno)
+void desenfileirarAlunos(Aluno* raiz) 
 {
-    if (aluno != nullptr)
-    {
-        imprimeAluno(aluno->esquerda);
-        cout << "Matr�cula: " << aluno->matricula << ", M�dia: " << aluno->media << endl;
-        imprimeAluno(aluno->direita);
-    }
-}
-
-void liberaArvore(Aluno *&raiz)
-{
-    if (raiz != nullptr)
-    {
-        liberaArvore(raiz->esquerda);
-        liberaArvore(raiz->direita);
+    if (raiz != nullptr) {
+        desenfileirarAlunos(raiz->esquerda);
+        if (raiz->media >= 5.0f) {
+            cout << "Matrícula: " << raiz->matricula << endl;
+        }
+        desenfileirarAlunos(raiz->direita);
         delete raiz;
-        raiz = nullptr;
     }
 }
-Aluno *buscarAluno(Aluno *raiz, int matricula)
+
+Aluno* buscarAluno(Aluno* raiz, int matricula) 
 {
-    if (raiz == nullptr || raiz->matricula == matricula)
-    {
+    if (raiz == nullptr || raiz->matricula == matricula) {
         return raiz;
     }
-
-    if (matricula < raiz->matricula)
-    {
+    if (matricula < raiz->matricula) {
         return buscarAluno(raiz->esquerda, matricula);
     }
-    else
-    {
-        return buscarAluno(raiz->direita, matricula);
-    }
+    return buscarAluno(raiz->direita, matricula);
 }
+
+Aluno* substituirAluno(Aluno* raiz, int matricula, float novaMedia) 
+{
+    if (raiz == nullptr) {
+        return criarAluno(matricula, novaMedia);
+    }
+    if (matricula == raiz->matricula) {
+        raiz->media = novaMedia;
+    } else if (matricula < raiz->matricula) {
+        raiz->esquerda = substituirAluno(raiz->esquerda, matricula, novaMedia);
+    } else {
+        raiz->direita = substituirAluno(raiz->direita, matricula, novaMedia);
+    }
+    return raiz;
+}
+
