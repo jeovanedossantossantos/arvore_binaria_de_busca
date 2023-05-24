@@ -11,13 +11,13 @@ int main()
         switch (op)
         {
         case 1:
-
+            inserirAluno();
             break;
         case 2:
-
+            substituirAluno();
             break;
         case 3:
-
+            buscarAluno();
             break;
         case 4:
 
