@@ -1,8 +1,11 @@
 #include "func.cpp"
-
+using namespace std;
 int main()
 {
     int op = 0;
+    int matricula;
+    float media;
+    Aluno *aluno = new Aluno;
     do
     {
         op = menu();
@@ -11,13 +14,21 @@ int main()
         switch (op)
         {
         case 1:
-            inserirAluno();
+            cout << "Digite a matricula\n";
+            cin >> matricula;
+            cout << "Digite a media";
+            cin >> media;
+            aluno = criarAluno(matricula, media);
             break;
         case 2:
-            substituirAluno();
+            cout << "Digite a matricula\n";
+            cin >> matricula;
+            cout << "Digite a media";
+            cin >> media;
+            aluno = substituirAluno(aluno, matricula, media);
             break;
         case 3:
-            buscarAluno();
+            // buscarAluno();
             break;
         case 4:
 
