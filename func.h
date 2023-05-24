@@ -15,8 +15,13 @@ struct Aluno
 };
 
 int menu();
-void substituiAluno(Aluno *raiz, int matricula, float novaMedia);
-void imprimeAluno(Aluno *aluno);
-void liberaArvore(Aluno *&raiz);
+Aluno *criarAluno(int matricula, float media);
+Aluno *inserirAluno(Aluno *raiz, int matricula, float media);
+void imprimirAlunos(Aluno *aluno);
+void desenfileirarAlunos(Aluno *raiz);
+Aluno *buscarAluno(Aluno *raiz, int matricula);
+Aluno *substituirAluno(Aluno *raiz, int matricula, float novaMedia);
+Aluno *menorValor(Aluno *node);
+Aluno *remove(Aluno *root, int matricula);
 
 #endif
