@@ -105,3 +105,51 @@ Aluno *substituirAluno(Aluno *raiz, int matricula, float novaMedia)
     }
     return raiz;
 }
+
+Aluno *menorValor(Aluno *node)
+{
+    Aluno *current = node;
+    while (current && current->esquerda != nullptr)
+    {
+        current = current->esquerda;
+    }
+    return current;
+}
+Aluno *remove(Aluno *root, int matricula)
+{
+    if (root == nullptr)
+    {
+        return root;
+    }
+
+    if (matricula < root->matricula)
+    {
+        root->esquerda = remove(root->esquerda, matricula);
+    }
+    else if (matricula > root->matricula)
+    {
+        root->direita = remove(root->direita, matricula);
+    }
+    else
+    {
+        if (root->esquerda == nullptr)
+        {
+            Aluno *temp = root->direita;
+            delete root;
+            return temp;
+        }
+        else if (root->direita == nullptr)
+        {
+            Aluno *temp = root->esquerda;
+            delete root;
+            return temp;
+        }
+
+        Aluno *successor = menorValor(root->direita);
+        root->matricula = successor->matricula;
+        root->media = successor->media;
+        root->direita = remove(root->direita, successor->matricula);
+    }
+
+    return root;
+}

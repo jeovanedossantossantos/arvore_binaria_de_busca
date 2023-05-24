@@ -21,6 +21,7 @@ void imprimirAlunos(Aluno *aluno);
 void desenfileirarAlunos(Aluno *raiz);
 Aluno *buscarAluno(Aluno *raiz, int matricula);
 Aluno *substituirAluno(Aluno *raiz, int matricula, float novaMedia);
-// void liberaArvore(Aluno *&raiz);
+Aluno *menorValor(Aluno *node);
+Aluno *remove(Aluno *root, int matricula);
 
 #endif
