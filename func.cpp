@@ -48,7 +48,7 @@ void imprimeAluno(Aluno *aluno)
     if (aluno != nullptr)
     {
         imprimeAluno(aluno->esquerda);
-        cout << "Matr�cula: " << aluno->matricula << ", M�dia: " << aluno->media << endl;
+        cout << "Matricula: " << aluno->matricula << ", Media: " << aluno->media << endl;
         imprimeAluno(aluno->direita);
     }
 }
